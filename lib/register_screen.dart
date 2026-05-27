@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'register_screen.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,25 +22,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   radius: 40,
                   backgroundColor: Color(0xFFEEF2FF),
                   child: Icon(
-                    Icons.lock_outline,
+                    Icons.person_add_alt_1_outlined,
                     size: 30,
                     color: Color(0xFF4F46E5),
                   ),
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Auth',
+                  'Criar conta',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'Seja Bem vindo!',
+                  'Preencha seus dados para se cadastrar',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: 'Usuário',
+                    labelText: 'Nome',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
@@ -55,6 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     prefixIcon: const Icon(
                       Icons.person_outline,
+                      color: Color(0xFF6B7280),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'E-mail',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(
+                        color: Color(0xFFCBD5E1),
+                        width: 1.5,
+                      ),
+                    ),
+                    prefixIcon: const Icon(
+                      Icons.email_outlined,
                       color: Color(0xFF6B7280),
                     ),
                   ),
@@ -80,15 +100,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text('Esqueceu a senha?'),
+                const SizedBox(height: 16),
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Confirmar senha',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(
+                        color: Color(0xFFCBD5E1),
+                        width: 1.5,
+                      ),
+                    ),
+                    prefixIcon: const Icon(
+                      Icons.lock_outline,
+                      color: Color(0xFF6B7280),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 24),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
@@ -101,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Login',
+                      'Cadastrar',
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
@@ -110,17 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Não tem uma conta?'),
+                    const Text('Já tem uma conta?'),
                     TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RegisterScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text('Cadastre-se'),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Entrar'),
                     ),
                   ],
                 ),
